@@ -21,8 +21,14 @@ def main() -> None:
     """
 
     try:
-        a: int = int(input("Введите делимое число: "))
-        b: int = int(input("Введите делитель: "))
+        a_input: str = input("Введите делимое число: ")
+        b_input: str = input("Введите делитель: ")
+
+        if not a_input.isdigit() or not b_input.isdigit():
+            raise ValueError("Введено некорректное значение. Ожидаются целые числа.")
+
+        a: int = int(a_input)
+        b: int = int(b_input)
 
         if a == 0:
             raise ZeroDivisionError("Делимое не может быть нулем.")
@@ -33,10 +39,10 @@ def main() -> None:
         else:
             print(divide_with_remainder(a, b))
 
-    except ValueError:
-        print("Некорректный ввод. Введите целое число.")
+    except ValueError as v_error:
+        print(f"Ошибка ввода: {v_error}")
     except ZeroDivisionError as error:
-        print(error)
+        print(f"Ошибка ввода: {error}")
 
 
 if __name__ == '__main__':
