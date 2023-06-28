@@ -5,7 +5,7 @@
 
 ## Книги:
 
-The Self-Taught Programmer: The Definitive Guide to Programming Professionally
+[The Self-Taught Programmer: The Definitive Guide to Programming Professionally](https://github.com/AwakeGit/Book-challenges-solutions/tree/main/SelfTaughtProgrammer)
 
 Автор: Кори Альтхофф
 
