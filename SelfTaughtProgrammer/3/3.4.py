@@ -1,6 +1,6 @@
 # 3.4 Напишите программу, которая выполняет деление двух чисел и выводит остаток.
 
-def divide_with_remainder(a: int, b: int) -> str:
+def divide_with_remainder(a: float, b: float) -> str:
     """
     Выполняет деление двух чисел и возвращает частное и остаток.
     :param a: Делимое число.
@@ -8,8 +8,8 @@ def divide_with_remainder(a: int, b: int) -> str:
     :return: Строку, содержащую результат деления (частное) и остаток.
     """
 
-    quotient: int = a // b
-    remainder: int = a % b
+    quotient: float = a // b
+    remainder: float = a % b
 
     return f"Частное: {quotient}, \nОстаток: {remainder}."
 
@@ -23,21 +23,14 @@ def main() -> None:
     while True:
         try:
             a_input: str = input("Введите делимое число: ")
+            a = float(a_input)
+
             b_input: str = input("Введите делитель: ")
-
-            if a_input.isdigit():
-                a = int(a_input)
-            else:
-                raise ValueError("Только цифры")
-
-            if b_input.isdigit():
-                b = int(b_input)
-            else:
-                raise ValueError("Только цифры")
+            b = float(b_input)
 
             break
-        except ValueError as v_error:
-            print(f"Ошибка ввода: {v_error}")
+        except ValueError:
+            print("Ошибка ввода: Введите корректное число.")
 
     print(divide_with_remainder(a, b))
 
