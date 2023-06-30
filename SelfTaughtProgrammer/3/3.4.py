@@ -20,29 +20,26 @@ def main() -> None:
     :return: None
     """
 
-    try:
-        a_input: str = input("Введите делимое число: ")
-        b_input: str = input("Введите делитель: ")
+    while True:
+        try:
+            a_input: str = input("Введите делимое число: ")
+            b_input: str = input("Введите делитель: ")
 
-        if not a_input.isdigit() or not b_input.isdigit():
-            raise ValueError("Введено некорректное значение. Ожидаются целые числа.")
+            if a_input.isdigit():
+                a = int(a_input)
+            else:
+                raise ValueError("Только цифры")
 
-        a: int = int(a_input)
-        b: int = int(b_input)
+            if b_input.isdigit():
+                b = int(b_input)
+            else:
+                raise ValueError("Только цифры")
 
-        if a == 0:
-            raise ZeroDivisionError("Делимое не может быть нулем.")
-        elif b == 0:
-            raise ZeroDivisionError("Делитель не может быть нулем.")
-        elif not isinstance(a, int) or not isinstance(b, int):
-            raise ValueError("Введено некорректное значение. Ожидаются целые числа.")
-        else:
-            print(divide_with_remainder(a, b))
+            break
+        except ValueError as v_error:
+            print(f"Ошибка ввода: {v_error}")
 
-    except ValueError as v_error:
-        print(f"Ошибка ввода: {v_error}")
-    except ZeroDivisionError as error:
-        print(f"Ошибка ввода: {error}")
+    print(divide_with_remainder(a, b))
 
 
 if __name__ == '__main__':
