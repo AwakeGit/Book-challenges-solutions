@@ -15,15 +15,17 @@ def main() -> None:
     :return: None
     """
 
-    try:
-        result: str = input("Введите строку: ").strip()
-        if not result:
-            raise ValueError("Введена пустая строка.")
+    while True:
+        try:
+            result: str = input("Введите строку: ").strip()
+            if not result:
+                raise ValueError("Введена пустая строка.")
 
-        print(return_string(result))
+            print(return_string(result))
+            break
 
-    except ValueError as e:
-        print(f"Ошибка ввода: {e}")
+        except ValueError as e:
+            print(f"Ошибка ввода: {e}")
 
 
 if __name__ == '__main__':
