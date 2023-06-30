@@ -5,7 +5,7 @@ def check(age):
     try:
         age = int(age)
     except ValueError:
-        raise ValueError("Только число.")
+        raise ValueError("Только целое число.")
 
     if age < 0:
         raise ValueError("Возраст не может быть отрицательным.")
