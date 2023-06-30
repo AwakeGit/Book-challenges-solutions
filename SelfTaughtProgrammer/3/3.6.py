@@ -1,32 +1,35 @@
 # 3.6 Напишите программу, которая будет выводить разные строки в зависимости от того, какое целое число было вами
 # присвоено переменной age, содержащейся в этой программе
 
+def check(age):
+    try:
+        age = int(age)
+    except ValueError:
+        raise ValueError("Только число.")
+
+    if age < 0:
+        raise ValueError("Возраст не может быть отрицательным.")
+    elif age < 18:
+        return "Вы еще несовершеннолетний."
+    elif 18 <= age < 65:
+        return "Вы взрослый."
+    else:
+        return "Вы пенсионер."
+
+
 def main() -> None:
     """
     Вызов главной функции.
     :return: None
     """
 
-    try:
-
-        age: str = input("Введите делимое число: ")
-
-        if not age.isdigit():
-            raise ValueError("Введено некорректное значение. Ожидаются целое число.")
-
-        age: int = int(age)
-
-        if age < 0:
-            raise ValueError("Возраст не может быть отрицательным.")
-        elif age < 18:
-            print("Вы еще несовершеннолетний.")
-        elif 18 <= age < 65:
-            print("Вы взрослый.")
-        else:
-            print("Вы пенсионер.")
-
-    except ValueError as v_error:
-        print(f"Ошибка ввода: {v_error}")
+    while True:
+        try:
+            age_input: str = input("Введите возраст: ")
+            print(check(age_input))
+            break
+        except ValueError as e:
+            print(f"Ошибка ввода: {e}")
 
 
 if __name__ == '__main__':
