@@ -1,6 +1,6 @@
 # 3.5 Напишите программу, которая принимает две переменные, делит одну на другую и выводит частное.
 
-def divide(a: int, b: int) -> str:
+def divide(a: float, b: float) -> str:
     """
     Выполняет деление двух чисел и возвращает частное.
     :param a: Делимое число.
@@ -8,7 +8,7 @@ def divide(a: int, b: int) -> str:
     :return: Строку, содержащую результат деления (частное) и остаток.
     """
 
-    quotient: int = a // b
+    quotient: float = a / b
 
     return f"Частное: {quotient}"
 
@@ -19,27 +19,25 @@ def main() -> None:
     :return: None
     """
 
-    try:
-        a_input: str = input("Введите делимое число: ")
-        b_input: str = input("Введите делитель: ")
+    while True:
+        try:
+            a_input: str = input("Введите целое число: ")
+            b_input: str = input("Введите целое число: ")
+            a: float = float(a_input)
+            b: float = float(b_input)
 
-        if not a_input.isdigit() or not b_input.isdigit():
-            raise ValueError("Введено некорректное значение. Ожидаются целые числа.")
+            if a == 0:
+                raise ZeroDivisionError("Делимое не может быть нулем.")
+            elif b == 0:
+                raise ZeroDivisionError("Делитель не может быть нулем.")
 
-        a: int = int(a_input)
-        b: int = int(b_input)
-
-        if a == 0:
-            raise ZeroDivisionError("Делимое не может быть нулем.")
-        elif b == 0:
-            raise ZeroDivisionError("Делитель не может быть нулем.")
-        else:
             print(divide(a, b))
+            break
 
-    except ValueError as v_error:
-        print(f"Ошибка ввода: {v_error}")
-    except ZeroDivisionError as error:
-        print(f"Ошибка ввода: {error}")
+        except ValueError:
+            print("Ошибка ввода. Ожидаются только целые числа.")
+        except ZeroDivisionError as e:
+            print(f"Ошибка деления. {e}")
 
 
 if __name__ == '__main__':
